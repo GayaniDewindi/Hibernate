@@ -2,8 +2,12 @@ package lk.ijse.hybernate.entity;
 
 import lk.ijse.hybernate.embaded.CustName;
 import lk.ijse.hybernate.embaded.MobilNumber;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
@@ -25,10 +29,17 @@ public class Customer {
     private double salary;
     @Column(name = "customer_age",columnDefinition = "SMALLINT")
     private int age;
+
+    @ElementCollection
     @CollectionTable(name = "customer_moblieNumber",
     joinColumns = @JoinColumn(name = "customer_id"))
     private List<MobilNumber>phoneNo;
-
+    @Transient
+    private String dob;
+    @CreationTimestamp
+    /*private Date createDate;*/
+   /* private Time  createDate;
+*/ private Timestamp createDate;
     public Customer(long id, CustName name, String address, double salary, int age, List<MobilNumber> phoneNo) {
         this.id = id;
         this.name = name;
