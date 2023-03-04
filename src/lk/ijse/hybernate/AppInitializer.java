@@ -15,18 +15,18 @@ import java.util.List;
 
 public class AppInitializer {
     public static void main(String[] args) {
-        CustomerRepository customerRepository=new CustomerRepository();
+     /*   CustomerRepository customerRepository=new CustomerRepository();
         Customer customer=customerRepository.getCustomer(1l);
-        System.out.println("Customer_id : "+customer.getId());
+        System.out.println("Customer_id : "+customer.getId()); // null.get
         boolean isDelete= customerRepository.deleteCustomer(customer);
         if (isDelete){
             System.out.println("Customer "+customer.getId()+"Delete Successfully" );
         }else {
             System.out.println("Customer "+customer.getId()+"Not Delete" );
+*/
 
-     /*
-      Update ek Customer
-      CustomerRepository customerRepository=new CustomerRepository();
+      //Update ek Customer
+      /*CustomerRepository customerRepository=new CustomerRepository();
         Customer customer=customerRepository.getCustomer(1l);
         System.out.println("Customer_id : "+customer.getId());
 
@@ -35,28 +35,29 @@ public class AppInitializer {
             System.out.println("Customer "+customer.getId()+"Update Successfully" );
         }else {
             System.out.println("Customer "+customer.getId()+"Not Update" );
-        }*/
-        /*
-        me save ek
-        CustomerRepository customerRepository = new CustomerRepository();
-        Customer customer = getCustomerEntity();
-        customerRepository.saveCustomer(customer);*/
+        }
+*/
+      //  me save ek
+       CustomerRepository customerRepository = new CustomerRepository();
+      Customer  customer = getCustomerEntity();
+        customerRepository.saveCustomer(customer);
 
-     /*   Customer customer=new Customer();
-        customer.setId(1);
-        /*customer.setName("Gayani");
+       //Customer customer=new Customer();
+       customer.setId(1);
+     /*   customer.setName("Gayani");
         customer.setAddress("Elpitiya");
-        customer.setSalary(30000.00);
-*//*
+        customer.setSalary(30000.00);*/
+
         CustName custName=new CustName();
 
-        custName.setLastName("Janith");
+        custName.setFirstName("Janith");
         custName.setMiddleName("Iduwara");
         custName.setLastName("Nanayakakkara");
 
         customer.setName(custName);
         customer.setAddress("galle");
         customer.setSalary(40000.00);
+
 
         List<MobilNumber>phoneNumbers =new ArrayList<>();
         phoneNumbers.add(new MobilNumber("MOBITEL","0714563234"));
@@ -70,33 +71,35 @@ public class AppInitializer {
         // thani table ekata transaction gahann on save unam commit karnn on session close krnn on.
 
 
-        session.close();*/
+        session.close();
     }
-//        private static  Customer getCustomerEntity(){
-//            Customer customer=new Customer();
-//            customer.setId(1);
-//
-//        CustName custName=new CustName();
-//
-//        custName.setLastName("Janith");
-//        custName.setMiddleName("Iduwara");
-//        custName.setLastName("Nanayakakkara");
-//
-//        customer.setName(custName);
-//        customer.setAddress("galle");
-//        customer.setSalary(40000.00);
-//
-//        List<MobilNumber>phoneNumbers =new ArrayList<>();
-//        phoneNumbers.add(new MobilNumber("MOBITEL","0714563234"));
-//        phoneNumbers.add(new MobilNumber("DIOLOG","0760904402"));
-//        customer.setPhoneNo(phoneNumbers);
-//
-//            Session session = SessionFactoryConfiguration.getInstance().getSession();
-//            Transaction transaction= session.beginTransaction();
-//            session.save(customer);
-//            transaction.commit();
-//            session.close();
-//        return customer;
-//
+        private static  Customer getCustomerEntity(){
+           Customer customer=new Customer();
+            customer.setId(1);
+
+       CustName custName=new CustName();
+
+        custName.setLastName("Janith");
+        custName.setMiddleName("Iduwara");
+        custName.setLastName("Nanayakakkara");
+
+       customer.setName(custName);
+       customer.setAddress("galle");
+       customer.setSalary(40000.00);
+
+       List<MobilNumber>phoneNumbers =new ArrayList<>();
+       phoneNumbers.add(new MobilNumber("MOBITEL","0714563234"));
+        phoneNumbers.add(new MobilNumber("DIOLOG","0760904402"));
+        customer.setPhoneNo(phoneNumbers);
+
+
+            Session session = SessionFactoryConfiguration.getInstance().getSession();
+            Transaction transaction= session.beginTransaction();
+            session.save(customer);
+            transaction.commit();
+            session.close();
+
+        return customer;
+
    }
 }

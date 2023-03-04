@@ -9,6 +9,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryConfiguration {
 
@@ -20,13 +21,21 @@ public class SessionFactoryConfiguration {
     }
 
     public SessionFactoryConfiguration() {
-        sessionFactory = new MetadataSources( new StandardServiceRegistryBuilder()
+       /* sessionFactory = new MetadataSources( new StandardServiceRegistryBuilder()
                 .configure()
                 .build()).addAnnotatedClass(Customer.class)
                 .getMetadataBuilder()
                 .applyImplicitNamingStrategy(ImplicitNamingStrategyJpaCompliantImpl.INSTANCE)
                 .build().getSessionFactoryBuilder()
-                .build();
+                .build();*/
+        /*Configuration configuration = new Configuration().configure().addAnnotatedClass(Customer.class);
+        sessionFactory = configuration.buildSessionFactory();*/
+        // Configuration ek simplifil kr gtt.
+        sessionFactory = new Configuration()
+                .configure()
+                .addAnnotatedClass(Customer.class)
+                 .buildSessionFactory();
+
 
     }
 
